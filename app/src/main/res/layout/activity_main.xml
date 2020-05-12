@@ -72,11 +72,11 @@
             android:textColor="@color/text_color" />
 
         <Spinner
+            android:id="@+id/spinner_view"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/round_edt_text"
-            android:entries="@array/operation_array" />
+            android:background="@drawable/round_edt_text" />
 
         <Button
             android:id="@+id/calculate_button"
