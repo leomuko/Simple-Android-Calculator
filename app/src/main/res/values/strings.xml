@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Simple Calculator</string>
+    <string name="text_one">Number One</string>
+    <string name="text_two">Number Two</string>
+    <string name="text_three">Operation</string>
+    <string name="button_text">Calculate</string>
+    <string name="result_text">Results</string>
+    <string name="response_text">Response</string>
+    <string name="expected_text">Expected</string>
+    <string name="passed_text">Passed</string>
+
+    <string-array name="operation_array">
+        <item>Add</item>
+        <item>Subtract</item>
+        <item>Divide</item>
+        <item>Multiply</item>
+    </string-array>
+</resources>
