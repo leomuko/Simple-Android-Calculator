@@ -5,5 +5,6 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="text_color">#ffffff</color>
     <color name="dark_yellow">#c49000</color>
-
+    <color name="light_pink">#FFB6C1</color>
+    <color name="navajo_white">#FFDEAD</color>
 </resources>
