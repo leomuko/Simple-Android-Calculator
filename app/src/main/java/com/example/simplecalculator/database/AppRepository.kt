@@ -31,6 +31,27 @@ class AppRepository(application: Application) {
     fun getAllResults(): LiveData<List<DatabaseModel>>{
         return allResults
     }
+    fun deleteResult(result: DatabaseModel){
+        uiScope.launch {
+            delete(result)
+        }
+    }
+    private suspend fun delete(result: DatabaseModel){
+        withContext(Dispatchers.IO){
+            resultDao.delete(result)
+        }
+    }
+
+    fun deleteAllResults(){
+        uiScope.launch {
+            deleteAll()
+        }
+    }
+    private suspend fun deleteAll(){
+        withContext(Dispatchers.IO){
+            resultDao.deleteAll()
+        }
+    }
 
 
 }

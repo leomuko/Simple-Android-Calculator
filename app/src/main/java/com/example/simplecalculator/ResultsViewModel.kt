@@ -52,4 +52,10 @@ class ResultsViewModel(application: Application): AndroidViewModel(application) 
 
         }
     }
+    fun delete(result: DatabaseModel){
+        repository.deleteResult(result)
+    }
+    fun deleteAll(){
+        repository.deleteAllResults()
+    }
 }

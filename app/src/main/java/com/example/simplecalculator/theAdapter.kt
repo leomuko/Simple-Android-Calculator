@@ -5,14 +5,18 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.simplecalculator.database.DatabaseModel
 import kotlinx.android.synthetic.main.list.view.*
 
-class theAdapter() : RecyclerView.Adapter<theAdapter.RecyclerViewHolder>(){
+class theAdapter(private val listener: OnItemClickListener) : RecyclerView.Adapter<theAdapter.RecyclerViewHolder>(){
     private var recyclerList: List<DatabaseModel> = emptyList()
+
+
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -34,11 +38,20 @@ class theAdapter() : RecyclerView.Adapter<theAdapter.RecyclerViewHolder>(){
         }else{
             holder.backgroundView.setBackgroundResource(R.color.light_pink)
         }
+        holder.deleteIcon.setOnClickListener {
+            if (position != RecyclerView.NO_POSITION){
+                listener.onDeleteIconClick(position)
+            }
+        }
+
 
     }
     fun setResults(results: List<DatabaseModel>){
         this.recyclerList = results
         notifyDataSetChanged()
+    }
+    fun getResultAt(position: Int): DatabaseModel{
+        return recyclerList[position]
     }
 
     class RecyclerViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -48,7 +61,15 @@ class theAdapter() : RecyclerView.Adapter<theAdapter.RecyclerViewHolder>(){
         var Expected: TextView = itemView.expected_value
         var Passed: TextView = itemView.passed_value
         var backgroundView: CardView = itemView.card_view
+        var deleteIcon: ImageView = itemView.delete_icon
+
+
 
 
     }
+
+
+}
+interface OnItemClickListener{
+    fun onDeleteIconClick(position: Int)
 }

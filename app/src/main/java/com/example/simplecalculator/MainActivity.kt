@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
@@ -22,12 +24,12 @@ import retrofit2.Callback
 import retrofit2.Response
 import kotlin.math.ceil
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnItemClickListener {
 
 
     private lateinit var resultViewModel: ResultsViewModel
     var operationSign: String = "+"
-
+    var resultAdapter: theAdapter = theAdapter(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -57,7 +59,7 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
-        var resultAdapter: theAdapter = theAdapter()
+
         recycler_view.adapter = resultAdapter
         recycler_view.layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL, true)
 
@@ -135,5 +137,25 @@ class MainActivity : AppCompatActivity() {
 
         })
 
+    }
+
+    override fun onDeleteIconClick(position: Int){
+        resultViewModel.delete(resultAdapter.getResultAt(position))
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.delete_option_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item?.itemId){
+            R.id.delete_all_results ->{
+                resultViewModel.deleteAll()
+                true
+            }else ->{
+                super.onOptionsItemSelected(item)
+            }
+        }
     }
 }
