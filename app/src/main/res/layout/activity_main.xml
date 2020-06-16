@@ -38,8 +38,7 @@
             android:ems="10"
             android:inputType="number"
             android:padding="5dp"
-            android:textColor="@color/text_color"
-            android:text="0"/>
+            android:textColor="@color/text_color" />
 
         <TextView
             android:id="@+id/textView2"
@@ -59,8 +58,7 @@
             android:ems="10"
             android:inputType="number"
             android:padding="5dp"
-            android:textColor="@color/text_color"
-            android:text="0"/>
+            android:textColor="@color/text_color" />
 
         <TextView
             android:id="@+id/textView3"

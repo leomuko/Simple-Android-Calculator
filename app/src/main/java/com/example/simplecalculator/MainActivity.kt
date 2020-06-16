@@ -108,7 +108,7 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
                     val body = response.body()
                     if (body != null) {
 
-                        resultViewModel.expectedAnswer.value = body.theResult.toInt()
+                        resultViewModel.expectedAnswer.value = try { body.theResult.toInt()} catch (e: NumberFormatException) {0}
 
                         var firstNumber: String? = number_one_input.text.toString()
                         var secondNumber: String? = number_two_input.text.toString()
